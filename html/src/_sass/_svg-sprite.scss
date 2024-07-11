@@ -1,0 +1,41 @@
+@use "sass:math";
+
+.icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}
+
+.icon-alert-triangle-outline {
+	font-size: math.div(16, 10)*1rem;
+	width: math.div(16, 16)*1em;
+}
+.icon-arrow-right {
+	font-size: math.div(14, 10)*1rem;
+	width: math.div(18, 14)*1em;
+}
+.icon-calendar-outline {
+	font-size: math.div(14, 10)*1rem;
+	width: math.div(14, 14)*1em;
+}
+.icon-close {
+	font-size: math.div(20, 10)*1rem;
+	width: math.div(20, 20)*1em;
+}
+.icon-phone-outline {
+	font-size: math.div(25, 10)*1rem;
+	width: math.div(27, 25)*1em;
+}
+.icon-pin-outline {
+	font-size: math.div(26, 10)*1rem;
+	width: math.div(22, 26)*1em;
+}
+.icon-ticket-outline {
+	font-size: math.div(26, 10)*1rem;
+	width: math.div(26, 26)*1em;
+}
+.icon-time-outline {
+	font-size: math.div(25, 10)*1rem;
+	width: math.div(25, 25)*1em;
+}

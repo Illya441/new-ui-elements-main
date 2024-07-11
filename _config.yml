@@ -1,0 +1,30 @@
+source: html/src/
+destination: html/temp/
+exclude: [
+  build,
+  libs,
+  node_modules,
+  tasks,
+  _sass,
+  _sprites,
+  _themes,
+  temp,
+  ajax,
+  css,
+  fonts,
+  img,
+  json,
+  index.html
+]
+
+plugins: [
+  jekyll-contentblocks,
+  jekyll-environment-variables
+]
+
+title: TickiKids
+lang: en
+prod: true
+baseURL: https://tickikids.com
+
+markdown: kramdown

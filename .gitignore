@@ -1,0 +1,25 @@
+.idea
+.vscode
+.history
+.fleet
+node_modules/
+temp/
+# /html/build/
+test
+_backup/
+
+### Jekyll template
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+### OS
+.DS_Store
+Thumbs.db
+[Dd]esktop.ini
+
+/bash.exe.stackdump
+*.zip
+
+test*.*

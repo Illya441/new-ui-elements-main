@@ -1,0 +1,239 @@
+@use "vars";
+@use "mixins";
+
+@import "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css";
+
+.t-swiper,
+.m-swiper {
+  --btn-size: 40px;
+
+  position: relative;
+  display: block;
+  overflow: hidden;
+  z-index: 1;
+  margin-bottom: 16px;
+
+  .swiper-button {
+    display: flex;
+    flex-shrink: 0;
+    background: none;
+    color: #b7b7b7;
+    margin-right: 0;
+    margin-left: 0;
+
+    &:hover {
+      color: var(--blue);
+    }
+
+    &::after {
+      content: normal;
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &__icon {
+      display: flex;
+      width: var(--btn-size);
+      height: var(--btn-size);
+      border-radius: var(--btn-size);
+      background: #fff;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+      transition: vars.$transition-style;
+      transition-property: color, opacity;
+      margin: auto;
+
+      .icon {
+        display: block;
+        margin: auto;
+        height: 16px;
+        color: currentColor;
+      }
+    }
+  }
+
+  .swiper-button-prev {
+    left: 5px;
+
+    .icon {
+      transform: scaleX(-1);
+    }
+  }
+
+  .swiper-button-next {
+    right: 5px;
+  }
+}
+
+.t-swiper {
+  --bg-rgb: 255,255,255;
+  --max-width: none;
+
+  margin: 0 -4px 24px;
+  max-width: var(--max-width);
+
+  .swiper-popup & {
+    --bg-rgb: 0,0,0;
+
+    @include mixins.breakpoint(vars.$md) {
+      --max-width: 80%;
+    }
+
+    @include mixins.breakpoint(vars.$md) {
+      --max-width: 1000px;
+
+      width: 80%;
+    }
+
+    margin: 20px auto 0;
+    width: 100%;
+  }
+
+  &__thumb {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #eee;
+    cursor: pointer;
+    transition: vars.$transition-style;
+    transition-property: box-shadow;
+
+    .swiper-slide-thumb-active & {
+      box-shadow: 0 0 0 4px #EED755;
+    }
+  }
+
+  .swiper-slide {
+    width: 115px;
+    display: flex;
+    padding: 4px;
+
+    @include mixins.breakpoint(vars.$md) {
+      width: 25%;
+    }
+
+    @include mixins.breakpoint(vars.$lg) {
+      width: 20%;
+    }
+
+    @include mixins.breakpoint(vars.$xl) {
+      width: calc(100% / 6);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4/3;
+    }
+  }
+
+  .swiper-button {
+    width: 50px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+
+    &.swiper-button-prev {
+      left: 0;
+      background: linear-gradient(to right, rgba(var(--bg-rgb),1) 0%,rgba(var(--bg-rgb),0) 100%);
+    }
+
+    &.swiper-button-next {
+      right: 0;
+      background: linear-gradient(to left, rgba(var(--bg-rgb),1) 0%,rgba(var(--bg-rgb),0) 100%);
+    }
+  }
+}
+
+.thumb-swiper {
+  display: flex;
+  justify-content: center;
+}
+
+.m-swiper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .swiper-slide {
+    display: flex;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+    }
+  }
+
+  .swiper-button {
+    position: absolute;
+    width: var(--btn-size);
+  }
+}
+
+.swiper-popup {
+  display: flex;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  background: rgba(0, 0, 0, .95);
+  padding: 16px;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(.7);
+  transition: vars.$transition-style;
+  transition-property: opacity, visibility, transform;
+
+  @include mixins.breakpoint(vars.$md) {
+    padding: 32px;
+  }
+
+  &--open {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &__body {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+
+    .m-swiper {
+      flex: 1;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    cursor: pointer;
+    color: #fff;
+    opacity: .5;
+    transition: vars.$transition-style;
+    transition-property: color, opacity;
+    z-index: 100;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    .icon {
+      display: block;
+      font-size: 18px;
+      margin: auto;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+/* stylelint-disable scss/at-function-pattern */
+/* stylelint-disable selector-no-vendor-prefix */
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+@function psTracking($d) {
+  @return ($d / 1000) * 1em;
+}
+
+@function rgbValues($color) {
+  @return red($color), green($color), blue($color);
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder{
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder{
+    @content;
+  }
+}
+
+@mixin breakpoint($min: null, $max: null) {
+  $media-min: '';
+
+  @if $min {
+    $media-min: '(min-width: ' + $min + ')';
+  }
+
+  $media-max: '';
+
+  @if $max {
+    $media-max: '(max-width: ' + ($max - .02) + ')';
+  }
+
+  $add-media: '';
+
+  @if $min and $max {
+    $add-media: ' and ';
+  }
+
+  $media: $media-min + $add-media + $media-max;
+
+  @media #{$media} {
+    @content;
+  }
+}
+
+@mixin line-clamp($num-lines) {
+  @if $num-lines == none {
+    -webkit-line-clamp: unset;
+  } @else {
+    /* stylelint-disable-next-line value-no-vendor-prefix */
+    display: -webkit-box;
+    -webkit-line-clamp: $num-lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+%no-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

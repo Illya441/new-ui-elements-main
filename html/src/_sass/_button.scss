@@ -1,0 +1,66 @@
+@use "vars";
+@use "mixins";
+
+.button {
+  --bg: var(--button-bg-primary);
+  --color: var(--button-text-primary);
+  --font: var(--font-button);
+  --font-weight: var(--font-button-weight);
+  --font-size: var(--font-button-size);
+  --letter-spacing: normal;
+  --text-transform: none;
+  --radius: var(--button-radius);
+  --border-width: 1px;
+  --border-color: var(--button-bg-primary);
+  --padding-x: 24px;
+  --padding-y: 12px;
+
+  font-family: var(--font);
+  font-weight: var(--font-weight);
+  font-size: var(--font-size);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing);
+  text-align: center;
+  text-transform: var(--text-transform);
+  text-decoration: none;
+  padding: var(--padding-y) var(--padding-x) !important;
+  border-radius: var(--radius);
+  height: auto;
+  border: var(--border-width) solid var(--border-color) !important;
+  background: var(--bg) !important;
+  color: var(--color) !important;
+  transition: vars.$transition-style !important;
+  transition-property: background, color, border-color !important;
+  box-sizing: border-box;
+
+  @include mixins.breakpoint(vars.$md) {
+    line-height: 1.4;
+  }
+
+  &:hover {
+    --bg: var(--button-bg-primary-hover);
+    --color: var(--button-text-primary-hover);
+    --border-color: var(--button-bg-primary-hover);
+  }
+
+  &--outline {
+    --bg: #fff;
+    --color: var(--button-bg-primary);
+  }
+
+  &:disabled,
+  &.disabled,
+  &.button-disabled {
+    --bg: #ededed;
+    --color: #ccc;
+
+    pointer-events: none;
+  }
+
+  &--attend {
+    &:hover {
+      --bg: #fff;
+      --color: var(--button-bg-primary);
+    }
+  }
+}

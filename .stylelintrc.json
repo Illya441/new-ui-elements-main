@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier-scss"
+  ],
+  "plugins": ["stylelint-selector-bem-pattern"],
+  "rules": {
+    "selector-class-pattern": null,
+    "function-url-quotes": null,
+    "alpha-value-notation": "number",
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["currentColor"] }],
+    "declaration-block-no-redundant-longhand-properties": [true, { "ignoreShorthands": ["/flex/"] }],
+    "function-name-case": ["lower", {"ignoreFunctions": ["rgbValues"]}],
+    "color-function-notation": "legacy",
+    "plugin/selector-bem-pattern": {
+      "componentName": "[A-Z]+",
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:-[a-z]+)?$",
+        "combined": "^\\.combined-{componentName}-[a-z]+$"
+      },
+      "utilitySelectors": "^\\.util-[a-z]+$"
+    },
+    "scss/double-slash-comment-empty-line-before": null
+  }
+}
