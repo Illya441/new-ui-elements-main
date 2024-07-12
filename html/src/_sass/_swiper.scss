@@ -3,7 +3,6 @@
 
 @import 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
 
-
 .t-swiper,
 .m-swiper {
   --btn-size: 40px;
@@ -76,42 +75,6 @@
   margin: calc(32px - var(--slide-padding)) calc(-1 * var(--slide-padding));
   max-width: var(--max-width);
 
-  &.single-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .swiper-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .swiper-slide {
-      max-width: 348px;
-      width: 100%;
-    }
-  }
-
-  .single-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    .swiper-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .swiper-slide {
-      max-width: 348px;
-      width: 100%;
-      
-  
-    }
-  }
-
   .swiper-popup & {
     --bg-rgb: 0, 0, 0;
 
@@ -143,7 +106,6 @@
   }
 
   .swiper-slide {
-    
     width: 115px;
     display: flex;
     padding: var(--slide-padding);
@@ -190,6 +152,7 @@
 .thumb-swiper {
   display: flex;
   justify-content: center;
+
 }
 
 .m-swiper {
