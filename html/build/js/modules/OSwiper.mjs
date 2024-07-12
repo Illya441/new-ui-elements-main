@@ -19,54 +19,61 @@ export function oSwiperInit() {
 
   if (!tSwiper && !popupSwiper) return;
 
-  const swiper = new Swiper(tSwiper, {
-    slidesPerView: 'auto',
-    watchSlidesProgress: true,
-    navigation: {
-      prevEl: tPrev,
-      nextEl: tNext,
-    },
-  });
+  if (tSlides.length === 1) {
+    tSwiper.classList.add('single-image');
+  
+  } 
 
-  const swiper3 = new Swiper(thumbSwiper, {
-    slidesPerView: 'auto',
-    watchSlidesProgress: true,
-    navigation: {
-      prevEl: thumbPrev,
-      nextEl: thumbNext,
-    },
-  });
-
-  const swiper2 = new Swiper(mSwiper, {
-    navigation: {
-      prevEl: mPrev,
-      nextEl: mNext,
-    },
-    thumbs: {
-      swiper: swiper3,
-    },
-  });
-
-  swiper2.on('slideChange', (swipe) => {
-    swiper.slideTo(swipe.activeIndex, 0, true);
-  });
-
-  function showBigImages() {
-    const curIdx = swiper.clickedIndex;
-
-    swiper2.slideTo(curIdx, 0, true);
-    popupSwiper.classList.add('swiper-popup--open');
-  }
-
-  function hideBigImages() {
-    popupSwiper.classList.remove('swiper-popup--open');
-  }
-
-  closePopupBtn.forEach((btn) => {
-    btn.addEventListener('click', hideBigImages);
-  });
-
-  tSlides.forEach((el) => {
-    el.addEventListener('click', showBigImages);
-  });
+    const swiper = new Swiper(tSwiper, {
+      slidesPerView: 'auto',
+      watchSlidesProgress: true,
+      navigation: {
+        prevEl: tPrev,
+        nextEl: tNext,
+      },
+    });
+  
+    const swiper3 = new Swiper(thumbSwiper, {
+      slidesPerView: 'auto',
+      watchSlidesProgress: true,
+      navigation: {
+        prevEl: thumbPrev,
+        nextEl: thumbNext,
+      },
+    });
+  
+    const swiper2 = new Swiper(mSwiper, {
+      navigation: {
+        prevEl: mPrev,
+        nextEl: mNext,
+      },
+      thumbs: {
+        swiper: swiper3,
+      },
+    });
+  
+    swiper2.on('slideChange', (swipe) => {
+      swiper.slideTo(swipe.activeIndex, 0, true);
+    });
+  
+    function showBigImages() {
+      const curIdx = swiper.clickedIndex;
+  
+      swiper2.slideTo(curIdx, 0, true);
+      popupSwiper.classList.add('swiper-popup--open');
+    }
+  
+    function hideBigImages() {
+      popupSwiper.classList.remove('swiper-popup--open');
+    }
+  
+    closePopupBtn.forEach((btn) => {
+      btn.addEventListener('click', hideBigImages);
+    });
+  
+    tSlides.forEach((el) => {
+      el.addEventListener('click', showBigImages);
+    });
+  
+  
 }

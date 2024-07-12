@@ -4,6 +4,7 @@
 .fleet
 node_modules/
 temp/
+prepros.config
 # /html/build/
 test
 _backup/
