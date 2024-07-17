@@ -90,4 +90,5 @@ export function oSwiperInit() {
   tSlides.forEach((el) => {
     el.addEventListener('click', showBigImages);
   });
+  
 }

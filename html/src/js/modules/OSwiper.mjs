@@ -12,12 +12,33 @@ export function oSwiperInit() {
   const mPrev = mSwiper?.querySelector('.swiper-button-prev');
   const mNext = mSwiper?.querySelector('.swiper-button-next');
 
-
   const thumbSwiper = popupSwiper?.querySelector('.thumb-swiper');
   const thumbPrev = thumbSwiper?.querySelector('.swiper-button-prev');
   const thumbNext = thumbSwiper?.querySelector('.swiper-button-next');
+  const thumbSlides = thumbSwiper?.querySelectorAll('.swiper-slide');
 
-  if (!tSwiper && !popupSwiper) return;
+  if (!tSwiper || !popupSwiper) return;
+
+  if (tSlides.length === 1) {
+    const swiperWrapper = tSwiper.querySelector('.swiper-wrapper');
+    const swiperSlide = tSwiper.querySelector('.swiper-slide');
+
+    if (swiperWrapper) {
+      swiperWrapper.style.justifyContent = 'center';
+    }
+
+    if (swiperSlide) {
+      swiperSlide.style.maxWidth = '348px';
+      swiperSlide.style.width = '100%';
+    }
+  }
+  
+  if (thumbSlides.length <= 6) {
+    const thumbSwiperWrapper = thumbSwiper.querySelector('.swiper-wrapper');
+    if (thumbSwiperWrapper) {
+      thumbSwiperWrapper.style.justifyContent = 'center';
+    }
+  }
 
   const swiper = new Swiper(tSwiper, {
     slidesPerView: 'auto',
@@ -69,4 +90,5 @@ export function oSwiperInit() {
   tSlides.forEach((el) => {
     el.addEventListener('click', showBigImages);
   });
+  
 }
