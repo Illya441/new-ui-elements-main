@@ -83,6 +83,61 @@
 
   <meta name="csrf-token" content="a0993b85d61b19d35dd33e0703a9d136" />
 
+  <script>
+    function initializeSwiperObserver() {
+
+      const observer = new MutationObserver(() => {
+        const tSwiper = document.querySelector('.main-swiper');
+
+        if (tSwiper) {
+          const tSlides = tSwiper.querySelectorAll('.t-swiper__thumb');
+          const swiperWrapper = tSwiper.querySelector('.swiper-wrapper');
+          const swiperSlides = tSwiper.querySelectorAll('.swiper-slide');
+
+          switch (tSlides.length) {
+            case 1:
+              if (swiperWrapper) {
+                swiperWrapper.style.justifyContent = 'center';
+              }
+              swiperSlides.forEach((slide) => {
+                slide.style.maxWidth = '356px';
+                slide.style.width = '100%';
+              });
+              break;
+
+            case 2:
+              if (swiperWrapper) {
+                swiperWrapper.style.justifyContent = 'space-between';
+              }
+              swiperSlides.forEach((slide) => {
+                slide.style.maxWidth = '348px';
+                slide.style.width = '100%';
+              });
+              break;
+
+            case 3:
+              if (swiperWrapper) {
+                swiperWrapper.style.justifyContent = 'space-between';
+              }
+              swiperSlides.forEach((slide) => {
+                slide.style.maxWidth = '230px';
+                slide.style.width = '100%';
+              });
+              break;
+          }
+
+          observer.disconnect();
+        }
+      });
+
+      observer.observe(document, { childList: true, subtree: true });
+    }
+
+    initializeSwiperObserver();
+
+  </script>
+
+
   <style type="text/css">
     .m-event-list__item.li65b37c97c8a0c {
       width: 100% !important;
@@ -343,31 +398,13 @@
                 <div class="swiper-slide">
                   <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
                 </div>
+                <div class="swiper-slide">
+                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
+                </div>
                 <!-- <div class="swiper-slide">
                   <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                </div>
-                <div class="swiper-slide">
+                </div> -->
+                <!-- <div class="swiper-slide">
                   <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
                 </div> -->
               </div>
@@ -397,15 +434,6 @@
                 <div class="m-swiper">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div>
-                    <!-- <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div> -->
                   </div>
 
                   <div class="swiper-button swiper-button-prev ">
@@ -429,34 +457,6 @@
                     <div class="swiper-slide">
                       <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
                     </div>
-                    <!-- <div class="swiper-slide">
-                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
-                    </div> -->
-                  
                   </div>
 
                   <div class="swiper-button swiper-button-prev">
@@ -575,7 +575,8 @@
                           style="background-image: url(https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/23331/icon_thumb_648bf3e59cf9d5.38528431.jpg);">
                           <img
                             src="https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/23331/icon_thumb_648bf3e59cf9d5.38528431.jpg"
-                            alt="Gardens by the Bay Ticket" title="Gardens by the Bay Ticket"></div>
+                            alt="Gardens by the Bay Ticket" title="Gardens by the Bay Ticket">
+                        </div>
                         <div
                           style="position:absolute;top:0px;left:0px;background-color: #94C900;padding:3px 10px;color:#ffffff;">
                           Featured</div>
@@ -698,7 +699,8 @@
                           style="background-image: url(https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/22928/icon_thumb_61bc78dcb59024.33683171.jpg);">
                           <img
                             src="https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/22928/icon_thumb_61bc78dcb59024.33683171.jpg"
-                            alt="Birthday Parties @Abrakadoodle" title="Birthday Parties @Abrakadoodle"></div>
+                            alt="Birthday Parties @Abrakadoodle" title="Birthday Parties @Abrakadoodle">
+                        </div>
                         <div class="event-item__price" itemprop="offers" itemscope=""
                           itemtype="https://schema.org/Offer">
                           <meta itemprop="url"
@@ -750,7 +752,8 @@
                           style="background-image: url(https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/21740/icon_thumb_60705dc2225288.35144874.jpg);">
                           <img
                             src="https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/21740/icon_thumb_60705dc2225288.35144874.jpg"
-                            alt="Birthday Party @Newton Show" title="Birthday Party @Newton Show"></div>
+                            alt="Birthday Party @Newton Show" title="Birthday Party @Newton Show">
+                        </div>
                       </div>
 
                       <div class="event-item__body">
@@ -799,7 +802,8 @@
                           <img
                             src="https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/25383/icon_thumb_6595601a324c84.47889711.jpg"
                             alt="Kids Baking Workshop @Little Bakers Lab"
-                            title="Kids Baking Workshop @Little Bakers Lab"></div>
+                            title="Kids Baking Workshop @Little Bakers Lab">
+                        </div>
                         <div class="event-item__price" itemprop="offers" itemscope=""
                           itemtype="https://schema.org/Offer">
                           <meta itemprop="url"
@@ -855,7 +859,8 @@
                           <img
                             src="https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/25302/icon_thumb_658a6dbb76cb43.51436553.jpg"
                             alt="The World of Swiss Education and Summer Camps - 2024"
-                            title="The World of Swiss Education and Summer Camps - 2024"></div>
+                            title="The World of Swiss Education and Summer Camps - 2024">
+                        </div>
                         <div class="event-item__price" itemprop="offers" itemscope=""
                           itemtype="https://schema.org/Offer">
                           <meta itemprop="url"
@@ -924,7 +929,8 @@
                           style="background-image: url(https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/24472/icon_thumb_63f5b5885e8644.66582526.jpg);">
                           <img
                             src="https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/24472/icon_thumb_63f5b5885e8644.66582526.jpg"
-                            alt="Newton Show Lab Holiday Program" title="Newton Show Lab Holiday Program"></div>
+                            alt="Newton Show Lab Holiday Program" title="Newton Show Lab Holiday Program">
+                        </div>
                         <div
                           style="position:absolute;top:0px;left:0px;background-color: #94C900;padding:3px 10px;color:#ffffff;">
                           Featured</div>
@@ -1027,7 +1033,8 @@
                           <img
                             src="https://tickikids.ams3.cdn.digitaloceanspaces.com/z2.cache/gallery/activities/9274/icon_thumb_5aa53638929d73.15641805.jpg"
                             alt="Healing Garden Tour @ Singapore Botanic Gardens"
-                            title="Healing Garden Tour @ Singapore Botanic Gardens"></div>
+                            title="Healing Garden Tour @ Singapore Botanic Gardens">
+                        </div>
                         <div class="event-item__price" itemprop="offers" itemscope=""
                           itemtype="https://schema.org/Offer">
                           <meta itemprop="url"

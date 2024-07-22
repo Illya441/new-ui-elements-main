@@ -5,7 +5,8 @@
   "description": "HTML markup",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp"
+    "dev": "gulp",
+    "build": "gulp build"
   },
   "author": "Alexander Bashkirov",
   "license": "ISC",

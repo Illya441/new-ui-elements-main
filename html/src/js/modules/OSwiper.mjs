@@ -19,20 +19,7 @@ export function oSwiperInit() {
 
   if (!tSwiper || !popupSwiper) return;
 
-  if (tSlides.length === 1) {
-    const swiperWrapper = tSwiper.querySelector('.swiper-wrapper');
-    const swiperSlide = tSwiper.querySelector('.swiper-slide');
 
-    if (swiperWrapper) {
-      swiperWrapper.style.justifyContent = 'center';
-    }
-
-    if (swiperSlide) {
-      swiperSlide.style.maxWidth = '348px';
-      swiperSlide.style.width = '100%';
-    }
-  }
-  
   if (thumbSlides.length <= 6) {
     const thumbSwiperWrapper = thumbSwiper.querySelector('.swiper-wrapper');
     if (thumbSwiperWrapper) {
@@ -90,5 +77,5 @@ export function oSwiperInit() {
   tSlides.forEach((el) => {
     el.addEventListener('click', showBigImages);
   });
-  
+
 }
