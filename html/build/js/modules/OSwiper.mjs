@@ -27,14 +27,17 @@ export function oSwiperInit() {
     }
   }
 
+  
   const swiper = new Swiper(tSwiper, {
     slidesPerView: 'auto',
+    slidesPerGroup: 1,
     watchSlidesProgress: true,
     navigation: {
       prevEl: tPrev,
       nextEl: tNext,
     },
   });
+
 
   const swiper3 = new Swiper(thumbSwiper, {
     slidesPerView: 'auto',

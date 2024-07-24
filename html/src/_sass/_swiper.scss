@@ -3,8 +3,6 @@
 
 @import 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
 
-
-
 .t-swiper,
 .m-swiper {
   --btn-size: 40px;
@@ -69,13 +67,33 @@
   }
 }
 
+.breakpoint-w {
+  .swiper-slide {
+    width: 115px;
+
+    @include mixins.breakpoint(vars.$md) {
+      width: 25%;
+    }
+
+    @include mixins.breakpoint(vars.$lg) {
+      width: 20%;
+    }
+
+    @include mixins.breakpoint(vars.$xl) {
+      width: calc(100% / 6);
+    }
+  }
+}
+
 .t-swiper {
-  --slide-padding: 4px;
+  --slide-padding: 5px;
   --bg-rgb: 255, 255, 255;
-  --max-width: none;
+  --max-width: 230px;
+  --margin-slide: 5px;
 
   margin: calc(32px - var(--slide-padding)) calc(-1 * var(--slide-padding));
-  max-width: var(--max-width);
+  max-width: calc(var(--max-width) * 3 + 40);
+
 
   .swiper-popup & {
     --bg-rgb: 0, 0, 0;
@@ -108,27 +126,24 @@
   }
 
   .swiper-slide {
-    width: 115px;
+    max-width: var(--max-width);
     display: flex;
+    margin: 0 var(--margin-slide);
     padding: var(--slide-padding);
-
-    @include mixins.breakpoint(vars.$md) {
-      width: 25%;
-    }
-
-    @include mixins.breakpoint(vars.$lg) {
-      width: 20%;
-    }
-
-    @include mixins.breakpoint(vars.$xl) {
-      width: calc(100% / 6);
-    }
 
     img {
       display: block;
       width: 100%;
       aspect-ratio: 4/3;
     }
+  }
+  
+  .swiper-slide:first-child {
+    margin-left: 0;
+  }
+
+  .swiper-slide:last-child {
+    margin-right: 0;
   }
 
   .swiper-button {
@@ -154,7 +169,6 @@
 .thumb-swiper {
   display: flex;
   justify-content: center;
-
 }
 
 .m-swiper {

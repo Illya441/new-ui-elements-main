@@ -85,15 +85,16 @@
 
   <script>
     function initializeSwiperObserver() {
-
       const observer = new MutationObserver(() => {
         const tSwiper = document.querySelector('.main-swiper');
-
+  
         if (tSwiper) {
           const tSlides = tSwiper.querySelectorAll('.t-swiper__thumb');
           const swiperWrapper = tSwiper.querySelector('.swiper-wrapper');
           const swiperSlides = tSwiper.querySelectorAll('.swiper-slide');
-
+          const tPrev = tSwiper.querySelector('.swiper-button-prev');
+          const tNext = tSwiper.querySelector('.swiper-button-next');
+  
           switch (tSlides.length) {
             case 1:
               if (swiperWrapper) {
@@ -104,7 +105,7 @@
                 slide.style.width = '100%';
               });
               break;
-
+  
             case 2:
               if (swiperWrapper) {
                 swiperWrapper.style.justifyContent = 'space-between';
@@ -114,28 +115,19 @@
                 slide.style.width = '100%';
               });
               break;
-
-            case 3:
-              if (swiperWrapper) {
-                swiperWrapper.style.justifyContent = 'space-between';
-              }
-              swiperSlides.forEach((slide) => {
-                slide.style.maxWidth = '230px';
-                slide.style.width = '100%';
-              });
-              break;
+  
           }
-
+  
           observer.disconnect();
         }
       });
-
+  
       observer.observe(document, { childList: true, subtree: true });
     }
-
+  
     initializeSwiperObserver();
-
   </script>
+  
 
 
   <style type="text/css">
@@ -399,13 +391,13 @@
                   <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
                 </div>
                 <div class="swiper-slide">
-                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
+                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-2.jpg" alt=""></div>
                 </div>
                 <!-- <div class="swiper-slide">
-                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
+                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-3.jpg" alt=""></div>
                 </div> -->
                 <!-- <div class="swiper-slide">
-                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
+                  <div class="t-swiper__thumb"><img src="/img/gallery/thumb-4.jpg" alt=""></div>
                 </div> -->
               </div>
 
@@ -431,10 +423,13 @@
                   <use xlink:href="/img/2024/sprite.svg#close" />
                 </svg></div>
               <div class="swiper-popup__body">
-                <div class="m-swiper">
+                <div class="m-swiper ">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="/img/gallery/img-1.jpg" alt=""></div>
-                  </div>
+                    <div class="swiper-slide"><img src="/img/gallery/img-2.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="/img/gallery/img-3.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="/img/gallery/img-4.jpg" alt=""></div>
+                  </div>                  
 
                   <div class="swiper-button swiper-button-prev ">
                     <div class="swiper-button__icon">
@@ -452,11 +447,33 @@
                   </div>
                 </div>
 
-                <div class="thumb-swiper t-swiper">
+                <div class="thumb-swiper t-swiper breakpoint-w">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide">
                       <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
                     </div>
+                    <div class="swiper-slide">
+                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-2.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-3.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-4.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-1.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-2.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-3.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="t-swiper__thumb"><img src="/img/gallery/thumb-4.jpg" alt=""></div>
+                    </div>
+
                   </div>
 
                   <div class="swiper-button swiper-button-prev">
