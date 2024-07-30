@@ -27,7 +27,7 @@ export function oSwiperInit() {
     }
   }
 
-  
+
   const swiper = new Swiper(tSwiper, {
     slidesPerView: 'auto',
     slidesPerGroup: 1,

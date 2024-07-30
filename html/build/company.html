@@ -87,47 +87,44 @@
     function initializeSwiperObserver() {
       const observer = new MutationObserver(() => {
         const tSwiper = document.querySelector('.main-swiper');
-  
-        if (tSwiper) {
-          const tSlides = tSwiper.querySelectorAll('.t-swiper__thumb');
-          const swiperWrapper = tSwiper.querySelector('.swiper-wrapper');
-          const swiperSlides = tSwiper.querySelectorAll('.swiper-slide');
-          const tPrev = tSwiper.querySelector('.swiper-button-prev');
-          const tNext = tSwiper.querySelector('.swiper-button-next');
-  
-          switch (tSlides.length) {
-            case 1:
-              if (swiperWrapper) {
-                swiperWrapper.style.justifyContent = 'center';
-              }
-              swiperSlides.forEach((slide) => {
-                slide.style.maxWidth = '356px';
-                slide.style.width = '100%';
-              });
-              break;
-  
-            case 2:
-              if (swiperWrapper) {
-                swiperWrapper.style.justifyContent = 'space-between';
-              }
-              swiperSlides.forEach((slide) => {
-                slide.style.maxWidth = '348px';
-                slide.style.width = '100%';
-              });
-              break;
-  
-          }
-  
-          observer.disconnect();
+        const swiperContainer = document.querySelector('.t-swiper');
+
+        const tSlides = tSwiper.querySelectorAll('.t-swiper__thumb');
+        const swiperWrapper = tSwiper.querySelector('.swiper-wrapper');
+        const swiperSlides = tSwiper.querySelectorAll('.swiper-slide');
+
+        if (!tSlides.length || !swiperWrapper || !tSwiper) {
+          return;
         }
+
+        const swiperSlidesMaxWidthValues = [
+          '356px',
+          '348px',
+          "230px"
+        ];
+
+        swiperContainer.style.setProperty('--max-width', tSlides.length > 2 ? swiperSlidesMaxWidthValues[2] : 'auto');
+
+        if (tSlides.length > 2) {
+          return;
+        }
+
+        swiperSlides.forEach((slide) => {
+          slide.style.maxWidth = tSlides.length === 1 ? swiperSlidesMaxWidthValues[0] : tSlides.length === 2 ? swiperSlidesMaxWidthValues[1] : '';
+          slide.style.width = '100%';
+        });
+
+        swiperWrapper.style.justifyContent = tSlides.length > 1 ? 'space-between' : 'center';
+
+        observer.disconnect();
       });
-  
+
       observer.observe(document, { childList: true, subtree: true });
     }
-  
+
     initializeSwiperObserver();
   </script>
-  
+
 
 
   <style type="text/css">
@@ -393,12 +390,12 @@
                 <div class="swiper-slide">
                   <div class="t-swiper__thumb"><img src="/img/gallery/thumb-2.jpg" alt=""></div>
                 </div>
-                <div class="swiper-slide">
+                <!-- <div class="swiper-slide">
                   <div class="t-swiper__thumb"><img src="/img/gallery/thumb-3.jpg" alt=""></div>
-                </div>
-                <div class="swiper-slide">
+                </div> -->
+                <!-- <div class="swiper-slide">
                   <div class="t-swiper__thumb"><img src="/img/gallery/thumb-4.jpg" alt=""></div>
-                </div>
+                </div> -->
               </div>
 
               <div class="swiper-button swiper-button-prev">
@@ -429,7 +426,7 @@
                     <div class="swiper-slide"><img src="/img/gallery/img-2.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="/img/gallery/img-3.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="/img/gallery/img-4.jpg" alt=""></div>
-                  </div>                  
+                  </div>
 
                   <div class="swiper-button swiper-button-prev ">
                     <div class="swiper-button__icon">

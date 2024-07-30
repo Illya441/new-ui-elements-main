@@ -88,7 +88,6 @@
 .t-swiper {
   --slide-padding: 5px;
   --bg-rgb: 255, 255, 255;
-  --max-width: 230px;
   --margin-slide: 5px;
 
   margin: calc(32px - var(--slide-padding)) calc(-1 * var(--slide-padding));
@@ -136,7 +135,7 @@
       aspect-ratio: 4/3;
     }
   }
-  
+
   .swiper-slide:first-child {
     margin-left: 0;
   }
