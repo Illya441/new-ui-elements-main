@@ -1,23 +1,23 @@
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
 
 export function oSwiperInit() {
-  const tSwiper = document.querySelector('.main-swiper');
-  const tPrev = tSwiper?.querySelector('.swiper-button-prev');
-  const tNext = tSwiper?.querySelector('.swiper-button-next');
-  const tSlides = tSwiper?.querySelectorAll('.t-swiper__thumb');
+  const mainSwiper = document.querySelector('.main-swiper');
+  const mainSwiperPrev = mainSwiper?.querySelector('.swiper-button-prev');
+  const mainSwiperNext = mainSwiper?.querySelector('.swiper-button-next');
+  const mainSwiperSlides = mainSwiper?.querySelectorAll('.swiper-slide');
 
   const popupSwiper = document.querySelector('.swiper-popup');
   const closePopupBtn = popupSwiper?.querySelectorAll('[data-preview-close]');
-  const mSwiper = popupSwiper?.querySelector('.m-swiper');
-  const mPrev = mSwiper?.querySelector('.swiper-button-prev');
-  const mNext = mSwiper?.querySelector('.swiper-button-next');
+  const galleryView = popupSwiper?.querySelector('.gallery-view');
+  const galleryViewPrev = galleryView?.querySelector('.swiper-button-prev');
+  const galleryViewNext = galleryView?.querySelector('.swiper-button-next');
 
   const thumbSwiper = popupSwiper?.querySelector('.thumb-swiper');
   const thumbPrev = thumbSwiper?.querySelector('.swiper-button-prev');
   const thumbNext = thumbSwiper?.querySelector('.swiper-button-next');
   const thumbSlides = thumbSwiper?.querySelectorAll('.swiper-slide');
 
-  if (!tSwiper || !popupSwiper) return;
+  if (!mainSwiper || !popupSwiper) return;
 
 
   if (thumbSlides.length <= 6) {
@@ -27,20 +27,22 @@ export function oSwiperInit() {
     }
   }
 
+  const slidesPerView = mainSwiperSlides.length > 2 ? 3 : mainSwiperSlides.length;
 
-  const swiper = new Swiper(tSwiper, {
-    slidesPerView: 'auto',
+  const swiper = new Swiper(mainSwiper, {
+    slidesPerView,
     slidesPerGroup: 1,
     watchSlidesProgress: true,
     navigation: {
-      prevEl: tPrev,
-      nextEl: tNext,
+      prevEl: mainSwiperPrev,
+      nextEl: mainSwiperNext,
     },
   });
 
 
   const swiper3 = new Swiper(thumbSwiper, {
-    slidesPerView: 'auto',
+    slidesPerView: 6,
+    // slidesPerGroup: 1,
     watchSlidesProgress: true,
     navigation: {
       prevEl: thumbPrev,
@@ -48,10 +50,10 @@ export function oSwiperInit() {
     },
   });
 
-  const swiper2 = new Swiper(mSwiper, {
+  const swiper2 = new Swiper(galleryView, {
     navigation: {
-      prevEl: mPrev,
-      nextEl: mNext,
+      prevEl: galleryViewPrev,
+      nextEl: galleryViewNext,
     },
     thumbs: {
       swiper: swiper3,
@@ -67,6 +69,7 @@ export function oSwiperInit() {
 
     swiper2.slideTo(curIdx, 0, true);
     popupSwiper.classList.add('swiper-popup--open');
+
   }
 
   function hideBigImages() {
@@ -77,7 +80,7 @@ export function oSwiperInit() {
     btn.addEventListener('click', hideBigImages);
   });
 
-  tSlides.forEach((el) => {
+  mainSwiperSlides.forEach((el) => {
     el.addEventListener('click', showBigImages);
   });
 

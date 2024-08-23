@@ -3,8 +3,8 @@
 
 @import 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
 
-.t-swiper,
-.m-swiper {
+.base-swiper {
+  --bg-rgb: 255, 255, 255;
   --btn-size: 40px;
 
   position: relative;
@@ -15,11 +15,15 @@
 
   .swiper-button {
     display: flex;
+    position: absolute;
     flex-shrink: 0;
+    width: calc(50px + var(--slide-padding));
+    height: auto;
     background: none;
     color: #b7b7b7;
-    margin-right: 0;
-    margin-left: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
 
     &:hover {
       color: var(--blue);
@@ -54,123 +58,112 @@
     }
   }
 
-  .swiper-button-prev {
-    left: 5px;
+  &:not(.swiper-initialized) .swiper-button-prev {
+    display: none;
+  }
 
+  .swiper-button-prev {
+    left: 0;
     .icon {
       transform: scaleX(-1);
     }
   }
 
   .swiper-button-next {
-    right: 5px;
+    right: 0;
   }
 }
 
-.t-swiper {
-  --bg-rgb: 255, 255, 255;
-  --max-width: none;
+.main-swiper {
+  $block: &;
+
   --slide-padding: 10px;
 
   margin: 0 calc(var(--slide-padding) * -1) 24px;
-  max-width: var(--max-width);
 
-  .swiper-popup & {
-    --bg-rgb: 0, 0, 0;
-
-    @include mixins.breakpoint(vars.$md) {
-      --max-width: 80%;
-    }
-
-    @include mixins.breakpoint(vars.$md) {
-      --max-width: 1000px;
-
-      width: 80%;
-    }
-
-    margin: 20px auto 0;
-    width: 100%;
-  }
-
-/*     &__thumb {
-    width: 100%;
-    // aspect-ratio: 4/3;
-    display: flex;
-    background: #eee;
-    cursor: pointer;
-    transition: vars.$transition-style;
-    transition-property: box-shadow;
-
-    .swiper-slide-thumb-active & {
-      box-shadow: 0 0 0 4px #EED755;
-    }
-  } */
-  
-  
-
-  .swiper-slide {
-    width: 115px;
-    display: flex;
+  &__slide {
     padding: 0 var(--slide-padding);
 
-    // @include mixins.breakpoint(vars.$md) {
-    //   width: 25%;
-    // }
+    #{$block}:not(.swiper-initialized) & {
+      flex: 1;
 
-    // @include mixins.breakpoint(vars.$lg) {
-    //   width: 20%;
-    // }
-
-    // @include mixins.breakpoint(vars.$xl) {
-    //   width: calc(100% / 6);
-    // }
-
-    img {
-      display: block;
-      margin: auto;
-      max-height: 260px;
-      aspect-ratio: 4/3;
-      width: auto;
-      max-width: 100%;
-    }
-
-    &.swiper-slide-thumb-active {
-      box-shadow: 0 0 0 4px #EED755;
+      &:nth-child(n + 4) {
+        display: none;
+      }
     }
   }
 
   .swiper-button {
-    width: 50px;
-    height: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: 0;
-
-    &.swiper-button-prev {
-      left: 0;
-      background: linear-gradient(to right, rgba(var(--bg-rgb), 1) 0%, rgba(var(--bg-rgb), 0) 100%);
+    @include mixins.breakpoint(vars.$md) {
+      background: none;
     }
 
-    &.swiper-button-next {
-      right: 0;
+    &:where(.swiper-button-prev) {
+      padding-left: var(--slide-padding);
+      background: linear-gradient(to right, rgba(var(--bg-rgb), 1) var(--slide-padding), rgba(var(--bg-rgb), 0) 100%);
+    }
+
+    &:where(.swiper-button-next) {
+      padding-right: var(--slide-padding);
       background: linear-gradient(to left, rgba(var(--bg-rgb), 1) 0%, rgba(var(--bg-rgb), 0) 100%);
+    }
+
+    &__icon {
+      display: none;
+
+      @include mixins.breakpoint(vars.$md) {
+        display: flex;
+      }
     }
   }
 }
 
 .thumb-swiper {
-  display: flex;
-  margin: 0;
-  justify-content: center;
-  
+  --bg-rgb: 0, 0, 0;
+  --max-width: none;
+
+  margin: 20px auto 0;
+  width: 100%;
+  max-width: var(--max-width);
+
+  @include mixins.breakpoint(vars.$md) {
+    --max-width: 80%;
+  }
+
+  @include mixins.breakpoint(vars.$md) {
+    --max-width: 1000px;
+
+    width: 80%;
+  }
+
   .swiper-slide {
-    padding: 0 5px;
+    display: flex;
+    padding: 4px 5px;
     margin: 0;
+    width: 20%;
+
+    img {
+      display: block;
+      margin: auto;
+    }
+
+    &.swiper-slide-thumb-active img {
+      box-shadow: 0 0 0 4px #eed755;
+    }
+  }
+
+  .swiper-button {
+    &.swiper-button-prev {
+      background: linear-gradient(to right, rgba(var(--bg-rgb), 1) 0%, rgba(var(--bg-rgb), 0) 100%);
+    }
+
+    &.swiper-button-next {
+      background: linear-gradient(to left, rgba(var(--bg-rgb), 1) 0%, rgba(var(--bg-rgb), 0) 100%);
+    }
   }
 }
 
-.m-swiper {
+.gallery-view {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -185,10 +178,6 @@
     }
   }
 
-  .swiper-button {
-    position: absolute;
-    width: var(--btn-size);
-  }
 }
 
 .swiper-popup {
@@ -224,7 +213,7 @@
     display: flex;
     flex-direction: column;
 
-    .m-swiper {
+    .gallery-view {
       flex: 1;
     }
   }

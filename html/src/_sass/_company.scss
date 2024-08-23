@@ -1,5 +1,5 @@
-@use "vars";
-@use "mixins";
+@use 'vars';
+@use 'mixins';
 
 $breakpoint: vars.$md;
 
@@ -50,7 +50,6 @@ h1 {
     margin-top: 0;
   }
 }
-
 
 .top-pict {
   --default-bg: #eee;
@@ -117,7 +116,9 @@ h1 {
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-width: 0;
   }
+
 
   &__content {
     flex: 1;
@@ -139,6 +140,8 @@ h1 {
     }
   }
 
+ 
+
   :where(a) {
     color: var(--blue);
 
@@ -147,6 +150,10 @@ h1 {
     }
   }
 }
+
+.img-gallery {
+  margin-top: 40px;
+  }
 
 .lo-logo {
   display: flex;
@@ -162,12 +169,12 @@ h1 {
   --color: #000;
 
   &--gold {
-    --bg: rgba(#{mixins.rgbValues(#F8DC4A)}, .3);
-    --color: #EC8103;
+    --bg: rgba(#{mixins.rgbValues(#f8dc4a)}, 0.3);
+    --color: #ec8103;
   }
 
   &--silver {
-    --bg: rgba(#{mixins.rgbValues(#e0e0e0)}, .3);
+    --bg: rgba(#{mixins.rgbValues(#e0e0e0)}, 0.3);
     --color: #7c7c7c;
   }
 
@@ -468,7 +475,7 @@ h1 {
       border-width: 0 1px 1px 0;
       transform: translateY(-2px) rotate(45deg);
 
-      [class*="--expand"] & {
+      [class*='--expand'] & {
         transform: translateY(2px) rotate(-135deg);
       }
     }
@@ -476,7 +483,7 @@ h1 {
 
   &__text {
     &--more {
-      [class*="--expand"] & {
+      [class*='--expand'] & {
         display: none;
       }
     }
@@ -484,7 +491,7 @@ h1 {
     &--less {
       display: none;
 
-      [class*="--expand"] & {
+      [class*='--expand'] & {
         display: block;
       }
     }
@@ -516,7 +523,7 @@ h1 {
     transition-property: opacity;
 
     a#{$block}:hover & {
-      opacity: .7;
+      opacity: 0.7;
     }
   }
 

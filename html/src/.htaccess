@@ -1,5 +1,0 @@
-AddDefaultCharset utf-8
-DirectoryIndex index.html
-<IfModule mod_mime.c>
-  AddType text/javascript js mjs
-</IfModule>
