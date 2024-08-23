@@ -64,6 +64,7 @@
 
   .swiper-button-prev {
     left: 0;
+    background: linear-gradient(to right, rgba(var(--bg-rgb), 1) 0%, rgba(var(--bg-rgb), 0) 100%);
     .icon {
       transform: scaleX(-1);
     }
@@ -71,6 +72,7 @@
 
   .swiper-button-next {
     right: 0;
+    background: linear-gradient(to left, rgba(var(--bg-rgb), 1) 0%, rgba(var(--bg-rgb), 0) 100%);
   }
 }
 
@@ -100,12 +102,10 @@
 
     &:where(.swiper-button-prev) {
       padding-left: var(--slide-padding);
-      background: linear-gradient(to right, rgba(var(--bg-rgb), 1) var(--slide-padding), rgba(var(--bg-rgb), 0) 100%);
     }
 
     &:where(.swiper-button-next) {
       padding-right: var(--slide-padding);
-      background: linear-gradient(to left, rgba(var(--bg-rgb), 1) 0%, rgba(var(--bg-rgb), 0) 100%);
     }
 
     &__icon {
@@ -152,18 +152,12 @@
     }
   }
 
-  .swiper-button {
-    &.swiper-button-prev {
-      background: linear-gradient(to right, rgba(var(--bg-rgb), 1) 0%, rgba(var(--bg-rgb), 0) 100%);
-    }
 
-    &.swiper-button-next {
-      background: linear-gradient(to left, rgba(var(--bg-rgb), 1) 0%, rgba(var(--bg-rgb), 0) 100%);
-    }
-  }
 }
 
 .gallery-view {
+  --bg-rgb: none;
+
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
