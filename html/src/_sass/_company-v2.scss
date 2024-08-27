@@ -192,6 +192,10 @@ h1 {
     font-weight: 900;
     font-size: 15px;
     line-height: 1;
+    
+    @include mixins.breakpoint($max: $breakpoint) {
+      margin-bottom: 9px;
+    }
   }
 
   &__logo-text {
@@ -255,6 +259,21 @@ h1 {
 
     @include mixins.breakpoint($breakpoint) {
       margin-bottom: 32px;
+    }
+
+    @include mixins.breakpoint($max: $breakpoint) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  }
+
+  &__logo,
+  &__membership {
+    @include mixins.breakpoint($max: $breakpoint) {
+      width: 100%;
+      display: block;
+      margin: auto;
     }
   }
 
@@ -392,7 +411,6 @@ h1 {
   &:where(:not(:first-child)) {
     margin-top: 60px;
   }
-
 
   &__title {
     margin: 0 0 16px;
@@ -570,4 +588,3 @@ h1 {
     margin-top: -1px;
   }
 }
-

@@ -1,0 +1,53 @@
+@use "vars";
+@use "mixins";
+
+.icon {
+  --vector-effect: non-scaling-stroke;
+  --stroke-width: 1.5px;
+
+  &[class*="-outline"] {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--stroke-width);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: var(--vector-effect);
+  }
+}
+
+@layer common {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+
+    &::before,
+    &::after {
+      content: normal;
+    }
+  }
+
+  :where([class*="col-"]) {
+    width: 100%;
+  }
+}
+
+.main__map .g-map {
+  iframe {
+    max-height: 100%;
+  }
+}
+
+.j-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__item {
+    display: block;
+    margin: 0;
+  }
+
+  @include mixins.breakpoint($max: vars.$md) {
+    grid-column: 1 / 3;
+  }
+}
