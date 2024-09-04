@@ -19,7 +19,6 @@ export function oSwiperInit() {
 
   if (!mainSwiper || !popupSwiper) return;
 
-
   if (thumbSlides.length <= 6) {
     const thumbSwiperWrapper = thumbSwiper.querySelector('.swiper-wrapper');
     if (thumbSwiperWrapper) {
@@ -37,17 +36,17 @@ export function oSwiperInit() {
       prevEl: mainSwiperPrev,
       nextEl: mainSwiperNext,
     },
-  });
 
+  });
 
   const swiper3 = new Swiper(thumbSwiper, {
     slidesPerView: 6,
-    // slidesPerGroup: 1,
     watchSlidesProgress: true,
     navigation: {
       prevEl: thumbPrev,
       nextEl: thumbNext,
     },
+
   });
 
   const swiper2 = new Swiper(galleryView, {
@@ -58,6 +57,8 @@ export function oSwiperInit() {
     thumbs: {
       swiper: swiper3,
     },
+
+
   });
 
   swiper2.on('slideChange', (swipe) => {
@@ -66,14 +67,25 @@ export function oSwiperInit() {
 
   function showBigImages() {
     const curIdx = swiper.clickedIndex;
-
     swiper2.slideTo(curIdx, 0, true);
     popupSwiper.classList.add('swiper-popup--open');
 
+    swiper2.keyboard.enable();
+
+    document.addEventListener('keydown', handleEscPress);
+  }
+
+  function handleEscPress(event) {
+    if (event.key === 'Escape') {
+      hideBigImages();
+    }
   }
 
   function hideBigImages() {
     popupSwiper.classList.remove('swiper-popup--open');
+
+    swiper2.keyboard.disable();
+    document.removeEventListener('keydown', handleEscPress);
   }
 
   closePopupBtn.forEach((btn) => {
@@ -83,5 +95,4 @@ export function oSwiperInit() {
   mainSwiperSlides.forEach((el) => {
     el.addEventListener('click', showBigImages);
   });
-
 }

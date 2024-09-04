@@ -46,8 +46,4 @@
     display: block;
     margin: 0;
   }
-
-  @include mixins.breakpoint($max: vars.$md) {
-    grid-column: 1 / 3;
-  }
 }

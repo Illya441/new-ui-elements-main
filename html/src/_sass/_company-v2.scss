@@ -192,7 +192,7 @@ h1 {
     font-weight: 900;
     font-size: 15px;
     line-height: 1;
-    
+
     @include mixins.breakpoint($max: $breakpoint) {
       margin-bottom: 9px;
     }
@@ -260,10 +260,11 @@ h1 {
     @include mixins.breakpoint($breakpoint) {
       margin-bottom: 32px;
     }
+  }
 
+  &__intro {
     @include mixins.breakpoint($max: $breakpoint) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
       gap: 10px;
     }
   }
@@ -274,6 +275,7 @@ h1 {
       width: 100%;
       display: block;
       margin: auto;
+      flex: 1 1 calc(50% - 10px);
     }
   }
 
